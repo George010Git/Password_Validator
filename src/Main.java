@@ -14,11 +14,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Enter a letter");
-            String password = sc.next();
+            System.out.println("Enter password");
+            String password = sc.nextLine();
             validatePassword(password);
-            if (hasMinimum8Length(password) && hasUpperLetter(password) && hasDigits(password) && hasCharacter(password)) {
-                System.out.println("Invalid Password ");
+            if (hasMinimum8Length(password) && hasUpperLetter(password) && hasDigits(password) && hasCharacter(password) && isWithoutSpace(password)) {
+                System.out.println("Correct Password ");
                 break;
             }
         }
@@ -37,6 +37,9 @@ public class Main {
         }
         if (!hasCharacter(password)) {
             System.out.println("The password does not contain special characters");
+        }
+        if (!isWithoutSpace(password)){
+            System.out.println("The password must not contain any spaces");
         }
     }
 
@@ -79,5 +82,13 @@ public class Main {
             }
         }
         return flag;
+    }
+
+    public static boolean isWithoutSpace(String password) {
+        if (!password.contains(" ")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
