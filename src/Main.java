@@ -1,21 +1,42 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Task1: Declara o metoda care primeste o parola si returneaza true sau fals
-        // Taks2: Verifica daca parola are minim 8 caractere lungime
-        // Task3: Verifica daca parola contine cel putin 1 majuscula
-        // Task4: Verifica daca parola contine cel putin 1 cifra
-        // Task5: Verifica daca parola contine cel putin 1 caracter special
+        /* Task1: Declare a method that receives a password and returns true or false
+         * Task2: Check if the password is at least 8 characters long
+         * Task3: Check if the password contains at least 1 capital letter
+         * Task4: Check if the password contains at least 1 digit
+         * Task5: Check if the password contains at least 1 special character
+         * Task6: Ask the user for a password, save it in a variable and then pass the variable in the method call
+         */
 
-        System.out.println(validatePassword("PassWord123*"));
-        System.out.println(validatePassword("PassWord123"));
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Enter a letter");
+            String password = sc.next();
+            validatePassword(password);
+            if (hasMinimum8Length(password) && hasUpperLetter(password) && hasDigits(password) && hasCharacter(password)) {
+                System.out.println("Invalid Password ");
+                break;
+            }
+        }
     }
 
-    public static boolean validatePassword(String password) {
-        if (hasMinimum8Length(password) && hasUpperLetter(password) && hasDigits(password) && hasCharacter(password)) {
-            return true;
-        } else {
-            return false;
+    public static void validatePassword(String password) {
+
+        if (!hasMinimum8Length(password)) {
+            System.out.println("The password does not have at least 8 characters");
+        }
+        if (!hasUpperLetter(password)) {
+            System.out.println("The password does not contain capital letters");
+        }
+        if (!hasDigits(password)) {
+            System.out.println("The password does not contain numbers");
+        }
+        if (!hasCharacter(password)) {
+            System.out.println("The password does not contain special characters");
         }
     }
 
